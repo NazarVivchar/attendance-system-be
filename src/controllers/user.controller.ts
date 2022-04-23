@@ -1,13 +1,9 @@
 import {
-  Body,
   Controller,
   Delete,
-  Get,
   Param,
   Post,
   Put,
-  Query,
-  UploadedFile,
   UploadedFiles,
   UseInterceptors,
   UsePipes,

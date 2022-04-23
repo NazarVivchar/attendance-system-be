@@ -44,6 +44,10 @@ export class UserRepository {
     return this.userModel
       .findOne(query)
       .populate('lastCheck')
+      .populate({
+        path: 'allChecks',
+        model: 'Check',
+      })
       .lean<UserModel>()
       .exec();
   }
@@ -52,6 +56,10 @@ export class UserRepository {
     return this.userModel
       .find(query)
       .populate('lastCheck')
+      .populate({
+        path: 'allChecks',
+        model: 'Check',
+      })
       .lean<UserModel[]>()
       .exec();
   }

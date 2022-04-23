@@ -32,7 +32,7 @@ export class WorkspaceUseCases {
 
   public async signIn(name: string, password: string) {
     const workspace = await this.workspaceRepository.getByName(name);
-
+    console.log(workspace);
     if (!workspace) {
       throw new UnauthorizedException({
         area: 'WorkspaceUseCases',

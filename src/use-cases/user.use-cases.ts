@@ -167,9 +167,12 @@ export class UserUseCases {
 
     const createdCheck = await this.checkRepository.create(createCheckDto);
 
+    const allCheckIds = user?.allChecks?.map((check) => check._id) || [];
+
     const updateUserDto: UpdateUserDto = {
       ...user,
       lastCheck: createdCheck._id,
+      allChecks: allCheckIds.concat(createdCheck._id),
     };
 
     return this.userRepository.update(user._id, updateUserDto);

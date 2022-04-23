@@ -30,6 +30,12 @@ export class User {
     ref: 'Check',
   })
   lastCheck: Types._ObjectId | Check;
+
+  @Prop({
+    type: [MongooseSchema.Types.ObjectId],
+    ref: 'Check',
+  })
+  allChecks: Types._ObjectId[] | Check[];
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);

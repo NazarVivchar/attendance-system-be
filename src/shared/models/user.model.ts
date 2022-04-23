@@ -25,4 +25,7 @@ export class UserModel {
 
   @IsObject()
   lastCheck: CheckModel;
+
+  @IsArray()
+  allChecks: CheckModel[];
 }

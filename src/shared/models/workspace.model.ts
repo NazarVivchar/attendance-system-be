@@ -29,11 +29,9 @@ export class WorkspaceModel {
   public password: string;
 
   @IsDate()
-  @Exclude({ toPlainOnly: true })
   public createdAt: Date;
 
   @IsDate()
-  @Exclude({ toPlainOnly: true })
   public updatedAt: Date;
 
   constructor(partial: Partial<WorkspaceModel>) {

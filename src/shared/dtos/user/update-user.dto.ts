@@ -24,4 +24,7 @@ export class UpdateUserDto {
   @IsOptional()
   @IsMongoId()
   lastCheck?: Types.ObjectId;
+
+  @IsOptional()
+  allChecks?: Types.ObjectId[];
 }
