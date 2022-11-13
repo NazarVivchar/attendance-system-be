@@ -32,7 +32,7 @@ export class UserRepository {
     await this.userModel.deleteOne({ _id: id });
   }
 
-Fix  public getById(id: Types._ObjectId | string): Promise<UserModel> {
+public getById(id: Types._ObjectId | string): Promise<UserModel> {
     return this.getByQuery({ _id: id });
   }
 
