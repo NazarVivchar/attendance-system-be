@@ -2,6 +2,7 @@ import { IsArray, IsMongoId, IsOptional, IsString } from 'class-validator';
 import { Types } from 'mongoose';
 
 export class UpdateUserDto {
+  @IsOptional()
   @IsMongoId()
   _id: Types.ObjectId;
 
@@ -18,6 +19,7 @@ export class UpdateUserDto {
   @IsArray()
   faceVector?: number[];
 
+  @IsOptional()
   @IsMongoId()
   workspace: Types.ObjectId;
 

@@ -100,6 +100,23 @@ export class UserUseCases {
     return this.userRepository.update(id, updateUserDto);
   }
 
+  public async updateSimple(
+    id: Types.ObjectId,
+    updateUserDto: UpdateUserDto,
+  ): Promise<UserModel> {
+    const user = await this.userRepository.getById(id);
+
+    if (!user) {
+      throw new UnauthorizedException({
+        area: 'UserUseCases',
+        message: `User not found`,
+        attrs: { id: updateUserDto._id },
+      });
+    }
+
+    return this.userRepository.update(id, updateUserDto);
+  }
+
   public async deleteById(id: Types.ObjectId): Promise<void> {
     const user = await this.userRepository.getById(id);
 

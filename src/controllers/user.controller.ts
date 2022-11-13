@@ -1,4 +1,5 @@
 import {
+  Body,
   Controller,
   Delete,
   Param,
@@ -13,6 +14,7 @@ import { UserUseCases } from '../use-cases/user.use-cases';
 import { UserModel } from '../shared/models/user.model';
 import { FilesInterceptor } from '@nestjs/platform-express';
 import { Types } from 'mongoose';
+import { UpdateUserDto } from '../shared/dtos/user/update-user.dto';
 
 @Controller('users')
 export class UserController {
@@ -33,6 +35,15 @@ export class UserController {
     @UploadedFiles() files: Express.Multer.File[],
   ): Promise<UserModel> {
     return this.userUseCases.update(id, files);
+  }
+
+  @Put(':id/simple')
+  @UsePipes(new ValidationPipe({ transform: true }))
+  updateSimple(
+    @Param('id') id: Types.ObjectId,
+    @Body() updateUserDto: UpdateUserDto,
+  ): Promise<UserModel> {
+    return this.userUseCases.updateSimple(id, updateUserDto);
   }
 
   @Delete(':id')
